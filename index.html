@@ -10,13 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Alpine JS for interactivity (optional, for potential future features) -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
+        :root {
+            --brand-color: #4f46e5; /* Indigo-600 */
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff; 
+            background-color: #f8fafc; /* Slate-50 */
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .gradient-text {
             background: linear-gradient(to right, #4f46e5, #7c3aed);
@@ -28,17 +31,17 @@
         }
         .card-hover:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.07), 0 8px 10px -6px rgb(0 0 0 / 0.07);
         }
         .lang-btn.active {
-            background-color: #4f46e5;
+            background-color: var(--brand-color);
             color: white;
         }
         .section-title {
-            @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+            @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
         }
         .section-subtitle {
-             @apply mt-4 text-lg leading-8 text-gray-600;
+             @apply mt-4 text-lg leading-8 text-slate-600;
         }
         .fade-in {
             opacity: 0;
@@ -51,27 +54,27 @@
         }
     </style>
 </head>
-<body class="text-gray-700 antialiased">
+<body class="text-slate-700">
 
     <!-- Header / Navigation -->
     <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <a href="#" class="flex-shrink-0 flex items-center space-x-2">
-                    <svg class="h-9 w-9 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 15.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0h3.75m-3.75 0h3.75m-3.75 0v3.75m6.75-3v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0H15m-3.75 0v3.75m6-6.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0h3.75M3.75 9h3.75m-3.75 0v3.75m0-3.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0V15m3.75-6v3.75m0 0v3.75m0 0h3.75m-3.75 0h3.75m0 0v-3.75m0 0v-3.75" />
                     </svg>
-                    <span class="font-extrabold text-2xl text-gray-900">DataHack</span>
+                    <span class="font-extrabold text-2xl text-slate-900">DataHack</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#kelas" data-lang-key="navKelas" class="text-gray-600 hover:text-indigo-600 font-semibold transition-colors">Kelas</a>
-                    <a href="#ebooks" data-lang-key="navEbooks" class="text-gray-600 hover:text-indigo-600 font-semibold transition-colors">E-Books</a>
-                    <a href="#blog" data-lang-key="navBlog" class="text-gray-600 hover:text-indigo-600 font-semibold transition-colors">Blog</a>
-                    <a href="#about" data-lang-key="navAbout" class="text-gray-600 hover:text-indigo-600 font-semibold transition-colors">Tentang Kami</a>
+                    <a href="#kelas" data-lang-key="navKelas" class="text-slate-600 hover:text-indigo-600 font-semibold transition-colors">Kelas</a>
+                    <a href="#ebooks" data-lang-key="navEbooks" class="text-slate-600 hover:text-indigo-600 font-semibold transition-colors">Sumber Daya</a>
+                    <a href="#testimonial" data-lang-key="navTestimonial" class="text-slate-600 hover:text-indigo-600 font-semibold transition-colors">Testimonial</a>
+                    <a href="#about" data-lang-key="navAbout" class="text-slate-600 hover:text-indigo-600 font-semibold transition-colors">Tentang</a>
                 </div>
                 <div class="flex items-center space-x-2">
-                     <button id="lang-id" class="lang-btn px-3 py-1.5 text-sm font-semibold rounded-lg transition-colors duration-200">ID</button>
-                     <button id="lang-en" class="lang-btn px-3 py-1.5 text-sm font-semibold rounded-lg transition-colors duration-200">EN</button>
+                     <button id="lang-id" class="lang-btn px-3 py-1.5 text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-200 transition-colors duration-200">ID</button>
+                     <button id="lang-en" class="lang-btn px-3 py-1.5 text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-200 transition-colors duration-200">EN</button>
                 </div>
             </div>
         </nav>
@@ -79,154 +82,132 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="relative isolate overflow-hidden bg-white">
-            <div class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-                <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
-                    <h1 class="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                        <span data-lang-key="heroTitle" class="block">Kuasai Data Science,</span>
-                        <span data-lang-key="heroSubtitle" class="block gradient-text">Buka Karir Global Anda</span>
-                    </h1>
-                    <p data-lang-key="heroDescription" class="mt-6 text-lg leading-8 text-gray-600">
-                        Platform belajar data science terlengkap dengan kurikulum standar industri, proyek praktis, dan bimbingan dari para ahli untuk mempersiapkan Anda bekerja remote di perusahaan top dunia.
-                    </p>
-                    <div class="mt-10 flex items-center gap-x-6">
-                        <a href="#kelas" class="rounded-md bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all transform hover:scale-105">
-                            <span data-lang-key="heroButton">Mulai Belajar Sekarang</span>
-                        </a>
-                        <a href="#about" class="text-sm font-semibold leading-6 text-gray-900" data-lang-key="heroLinkAbout">Pelajari lebih lanjut <span aria-hidden="true">→</span></a>
-                    </div>
-                </div>
-                <div class="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-32">
-                    <div class="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-                        <!-- Hero Image / Illustration -->
-                        <img src="https://placehold.co/800x600/e0e7ff/4f46e5?text=Visualisasi+Data" alt="App screenshot" width="2432" height="1442" class="w-[76rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-gray-900/10">
+        <section class="bg-white">
+            <div class="relative isolate px-6 pt-14 lg:px-8">
+                <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-40">
+                    <div class="text-center">
+                        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
+                            <span data-lang-key="heroTitle" class="block">Kuasai Data Science,</span>
+                            <span data-lang-key="heroSubtitle" class="block gradient-text">Buka Karir Global Anda</span>
+                        </h1>
+                        <p data-lang-key="heroDescription" class="mt-6 text-lg leading-8 text-slate-600">
+                            Platform belajar data science terlengkap dengan kurikulum standar industri, proyek praktis, dan bimbingan dari para ahli untuk mempersiapkan Anda bekerja remote di perusahaan top dunia.
+                        </p>
+                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                            <a href="#kelas" class="rounded-md bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all transform hover:scale-105">
+                                <span data-lang-key="heroButton">Jelajahi Kelas</span>
+                            </a>
+                            <a href="#about" class="text-sm font-semibold leading-6 text-slate-900" data-lang-key="heroLinkAbout">Pelajari lebih lanjut <span aria-hidden="true">→</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+
         <!-- Social Proof Section -->
-        <section class="bg-gray-50 py-24 sm:py-32">
+        <section class="py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:max-w-none">
-                    <h2 class="text-center text-lg font-semibold leading-8 text-gray-900" data-lang-key="socialProofTitle">
-                        Dipercaya oleh para profesional di perusahaan teknologi terkemuka
-                    </h2>
-                    <div class="mx-auto mt-10 grid grid-cols-4 items-center gap-x-8 gap-y-10 sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:grid-cols-5">
-                        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="158" height="48">
-                        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform" width="158" height="48">
-                        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple" width="158" height="48">
-                        <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal" width="158" height="48">
-                        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic" width="158" height="48">
-                    </div>
+                <h2 class="text-center text-lg font-semibold leading-8 text-slate-900" data-lang-key="socialProofTitle">
+                    Dipercaya oleh para profesional di perusahaan teknologi terkemuka
+                </h2>
+                <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform" width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple" width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal" width="158" height="48">
+                    <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic" width="158" height="48">
                 </div>
             </div>
         </section>
 
         <!-- Courses Section -->
-        <section id="kelas" class="py-24 sm:py-32">
+        <section id="kelas" class="bg-white py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-2xl lg:text-center">
-                    <h2 class="text-base font-semibold leading-7 text-indigo-600" data-lang-key="coursesTag">Pilihan Populer</h2>
-                    <p class="section-title" data-lang-key="coursesTitle">Alur Belajar untuk Setiap Tujuan</p>
+                    <h2 class="text-base font-semibold leading-7 text-indigo-600" data-lang-key="coursesTag">Alur Belajar</h2>
+                    <p class="section-title" data-lang-key="coursesTitle">Kurikulum untuk Setiap Tujuan Karir</p>
                     <p class="section-subtitle" data-lang-key="coursesSubtitle">
                         Pilih jalur yang sesuai dengan tujuan karir Anda, dari dasar hingga tingkat lanjut, semuanya dirancang oleh para ahli industri.
                     </p>
                 </div>
-                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                    <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                        <!-- Course Card 1 -->
-                        <div class="flex flex-col p-8 bg-slate-50 rounded-2xl shadow-sm card-hover">
-                           <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full w-fit" data-lang-key="course1Level">Pemula</span>
-                           <h3 data-lang-key="course1Title" class="mt-4 text-2xl font-bold text-gray-900">Dasar-Dasar Data Science</h3>
-                           <p data-lang-key="course1Desc" class="mt-3 text-base text-gray-600 flex-grow">Kuasai fondasi Python, SQL, dan Statistika. Sempurna bagi Anda yang memulai dari nol.</p>
-                           <div class="mt-8 flex justify-between items-center">
-                               <p class="text-2xl font-bold text-indigo-600" data-lang-key="course1Price">Gratis</p>
-                               <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors" data-lang-key="courseButton">Lihat Silabus &rarr;</a>
-                           </div>
-                        </div>
-                        <!-- Course Card 2 -->
-                        <div class="flex flex-col p-8 bg-slate-50 rounded-2xl shadow-sm card-hover">
-                            <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full w-fit" data-lang-key="course2Level">Menengah</span>
-                           <h3 data-lang-key="course2Title" class="mt-4 text-2xl font-bold text-gray-900">Machine Learning untuk Bisnis</h3>
-                           <p data-lang-key="course2Desc" class="mt-3 text-base text-gray-600 flex-grow">Belajar menerapkan model machine learning untuk memecahkan masalah bisnis nyata seperti prediksi churn.</p>
-                           <div class="mt-8 flex justify-between items-center">
-                               <p class="text-2xl font-bold text-gray-900" data-lang-key="course2Price">Rp 1.500.000</p>
-                               <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors" data-lang-key="courseButton">Lihat Silabus &rarr;</a>
-                           </div>
-                        </div>
-                        <!-- Course Card 3 -->
-                        <div class="flex flex-col p-8 bg-slate-50 rounded-2xl shadow-sm card-hover">
-                           <span class="inline-block bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full w-fit" data-lang-key="course3Level">Lanjutan</span>
-                           <h3 data-lang-key="course3Title" class="mt-4 text-2xl font-bold text-gray-900">Visualisasi Data & Storytelling</h3>
-                           <p data-lang-key="course3Desc" class="mt-3 text-base text-gray-600 flex-grow">Ubah data kompleks menjadi insight yang menarik dan mudah dipahami menggunakan Tableau dan Power BI.</p>
-                           <div class="mt-8 flex justify-between items-center">
-                               <p class="text-2xl font-bold text-gray-900" data-lang-key="course3Price">Rp 1.250.000</p>
-                               <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors" data-lang-key="courseButton">Lihat Silabus &rarr;</a>
-                           </div>
-                        </div>
+                <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <!-- Course Card 1 -->
+                    <div class="flex flex-col rounded-2xl bg-white p-8 ring-1 ring-slate-200 card-hover">
+                        <h3 data-lang-key="course1Title" class="text-lg font-semibold leading-8 text-slate-900">Dasar-Dasar Data Science</h3>
+                        <p data-lang-key="course1Desc" class="mt-4 text-base leading-7 text-slate-600 flex-grow">Kuasai fondasi Python, SQL, dan Statistika. Sempurna bagi Anda yang memulai dari nol.</p>
+                        <p class="mt-6 text-2xl font-bold text-indigo-600" data-lang-key="course1Price">Gratis</p>
+                        <a href="#" class="mt-6 inline-block rounded-md bg-indigo-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all" data-lang-key="courseButton">Mulai Belajar</a>
+                    </div>
+                    <!-- Course Card 2 -->
+                    <div class="flex flex-col rounded-2xl bg-white p-8 ring-1 ring-slate-200 card-hover">
+                       <h3 data-lang-key="course2Title" class="text-lg font-semibold leading-8 text-slate-900">Machine Learning untuk Bisnis</h3>
+                       <p data-lang-key="course2Desc" class="mt-4 text-base leading-7 text-slate-600 flex-grow">Belajar menerapkan model machine learning untuk memecahkan masalah bisnis nyata seperti prediksi churn.</p>
+                       <p class="mt-6 text-2xl font-bold text-slate-900" data-lang-key="course2Price">Rp 1.500.000</p>
+                       <a href="#" class="mt-6 inline-block rounded-md bg-slate-800 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800 transition-all" data-lang-key="courseButtonPaid">Daftar Kelas</a>
+                    </div>
+                    <!-- Course Card 3 -->
+                    <div class="flex flex-col rounded-2xl bg-white p-8 ring-1 ring-slate-200 card-hover">
+                       <h3 data-lang-key="course3Title" class="text-lg font-semibold leading-8 text-slate-900">Visualisasi Data & Storytelling</h3>
+                       <p data-lang-key="course3Desc" class="mt-4 text-base leading-7 text-slate-600 flex-grow">Ubah data kompleks menjadi insight yang menarik dan mudah dipahami menggunakan Tableau dan Power BI.</p>
+                       <p class="mt-6 text-2xl font-bold text-slate-900" data-lang-key="course3Price">Rp 1.250.000</p>
+                       <a href="#" class="mt-6 inline-block rounded-md bg-slate-800 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800 transition-all" data-lang-key="courseButtonPaid">Daftar Kelas</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonial Section -->
-        <section id="testimonial" class="bg-gray-900 py-24 sm:py-32">
+        <section id="testimonial" class="py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-xl text-center">
-                    <p class="text-lg font-semibold leading-8 tracking-tight text-indigo-400" data-lang-key="testimonialTag">Testimonial</p>
-                    <h2 class="mt-2 section-title text-white" data-lang-key="testimonialTitle">Kami telah membantu ribuan orang</h2>
+                    <p class="text-lg font-semibold leading-8 tracking-tight text-indigo-600" data-lang-key="testimonialTag">Testimonial</p>
+                    <h2 class="mt-2 section-title" data-lang-key="testimonialTitle">Apa Kata Alumni Kami</h2>
                 </div>
                 <div class="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
-                    <div class="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
-                        <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
-                            <figure class="rounded-2xl bg-gray-800 p-8 text-sm leading-6">
-                                <blockquote class="text-gray-300">
-                                    <p data-lang-key="testimonial1Text">“Platform ini benar-benar mengubah cara saya memandang data. Materi dari dasar hingga machine learning sangat terstruktur. Dalam 6 bulan, saya berhasil mendapatkan pekerjaan remote pertama saya!”</p>
-                                </blockquote>
+                    <div class="sm:columns-2 sm:text-[0] lg:columns-3 space-y-8 sm:space-y-0 sm:gap-8">
+                        <div class="break-inside-avoid">
+                            <blockquote class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+                                <p class="text-base text-slate-700" data-lang-key="testimonial1Text">“Platform ini benar-benar mengubah cara saya memandang data. Materi dari dasar hingga machine learning sangat terstruktur. Dalam 6 bulan, saya berhasil mendapatkan pekerjaan remote pertama saya!”</p>
                                 <figcaption class="mt-6 flex items-center gap-x-4">
-                                    <img class="h-10 w-10 rounded-full bg-gray-700" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    <img class="h-10 w-10 rounded-full bg-slate-200" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                                     <div>
-                                        <div class="font-semibold text-white" data-lang-key="testimonial1Name">Andi P.</div>
-                                        <div class="text-gray-400" data-lang-key="testimonial1Role">Data Analyst @ Startup US</div>
+                                        <div class="font-semibold text-slate-900" data-lang-key="testimonial1Name">Andi P.</div>
+                                        <div class="text-slate-600" data-lang-key="testimonial1Role">Data Analyst @ Startup US</div>
                                     </div>
                                 </figcaption>
-                            </figure>
+                            </blockquote>
                         </div>
-                         <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
-                            <figure class="rounded-2xl bg-gray-800 p-8 text-sm leading-6">
-                                <blockquote class="text-gray-300">
-                                    <p data-lang-key="testimonial2Text">“Sebagai seseorang tanpa latar belakang IT, saya awalnya ragu. Tapi kurikulumnya sangat ramah pemula dan mentornya sangat membantu. Portofolio yang saya bangun di sini menjadi kunci wawancara.”</p>
-                                </blockquote>
+                         <div class="break-inside-avoid">
+                            <blockquote class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+                                <p class="text-base text-slate-700" data-lang-key="testimonial2Text">“Sebagai seseorang tanpa latar belakang IT, saya awalnya ragu. Tapi kurikulumnya sangat ramah pemula dan mentornya sangat membantu. Portofolio yang saya bangun di sini menjadi kunci wawancara.”</p>
                                 <figcaption class="mt-6 flex items-center gap-x-4">
-                                    <img class="h-10 w-10 rounded-full bg-gray-700" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    <img class="h-10 w-10 rounded-full bg-slate-200" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                                     <div>
-                                        <div class="font-semibold text-white" data-lang-key="testimonial2Name">Sarah K.</div>
-                                        <div class="text-gray-400" data-lang-key="testimonial2Role">Marketing Manager</div>
+                                        <div class="font-semibold text-slate-900" data-lang-key="testimonial2Name">Sarah K.</div>
+                                        <div class="text-slate-600" data-lang-key="testimonial2Role">Marketing Manager</div>
                                     </div>
                                 </figcaption>
-                            </figure>
+                            </blockquote>
                         </div>
-                         <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
-                            <figure class="rounded-2xl bg-gray-800 p-8 text-sm leading-6">
-                                <blockquote class="text-gray-300">
-                                    <p data-lang-key="testimonial3Text">“E-book dan panduan wawancaranya sangat praktis. Saya merasa jauh lebih percaya diri saat menghadapi sesi teknis dan studi kasus. Sangat direkomendasikan.”</p>
-                                </blockquote>
+                         <div class="break-inside-avoid">
+                           <blockquote class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+                                <p class="text-base text-slate-700" data-lang-key="testimonial3Text">“E-book dan panduan wawancaranya sangat praktis. Saya merasa jauh lebih percaya diri saat menghadapi sesi teknis dan studi kasus. Sangat direkomendasikan.”</p>
                                 <figcaption class="mt-6 flex items-center gap-x-4">
-                                    <img class="h-10 w-10 rounded-full bg-gray-700" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    <img class="h-10 w-10 rounded-full bg-slate-200" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                                     <div>
-                                        <div class="font-semibold text-white" data-lang-key="testimonial3Name">Bima W.</div>
-                                        <div class="text-gray-400" data-lang-key="testimonial3Role">Fresh Graduate</div>
+                                        <div class="font-semibold text-slate-900" data-lang-key="testimonial3Name">Bima W.</div>
+                                        <div class="text-slate-600" data-lang-key="testimonial3Role">Fresh Graduate</div>
                                     </div>
                                 </figcaption>
-                            </figure>
+                            </blockquote>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- E-books & Blog Combined Section -->
+        <!-- Resources (E-books & Blog) Section -->
         <section id="ebooks" class="bg-white py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-2xl text-center">
@@ -235,90 +216,72 @@
                         Jelajahi E-Book, panduan, dan artikel blog kami untuk mendapatkan wawasan mendalam dan tetap terdepan dalam tren industri.
                     </p>
                 </div>
-                <div id="blog" class="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    <!-- Resource Card 1 (Ebook) -->
-                    <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 card-hover">
-                        <img src="https://images.unsplash.com/photo-1550537612-4a42b1b3b3a2?q=80&w=2070&auto=format&fit=crop" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
-                        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-                        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-                        <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-                             <span class="mr-8" data-lang-key="ebook1Tag">E-BOOK GRATIS</span>
+                <div id="blog" class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <!-- Resource Card 1 -->
+                    <a href="#" class="flex flex-col items-start p-8 bg-white rounded-2xl ring-1 ring-slate-200 card-hover">
+                        <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-lg p-3">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
                         </div>
-                        <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-                            <a href="#">
-                                <span class="absolute inset-0"></span>
-                                <span data-lang-key="ebook1Title">Panduan Karir DS: Dari Nol ke Profesional</span>
-                            </a>
-                        </h3>
-                    </article>
-                    <!-- Resource Card 2 (Blog) -->
-                     <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 card-hover">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
-                        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-                        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-                        <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-                             <span class="mr-8" data-lang-key="blog1Category">BLOG: KARIR</span>
+                        <p class="mt-6 text-sm font-semibold text-indigo-600" data-lang-key="ebook1Tag">E-BOOK GRATIS</p>
+                        <h3 class="mt-2 text-lg font-semibold text-slate-900" data-lang-key="ebook1Title">Panduan Karir DS: Dari Nol ke Profesional</h3>
+                        <p class="mt-2 text-base text-slate-600" data-lang-key="ebook1Desc">Langkah demi langkah memulai karir data science dari nol.</p>
+                    </a>
+                    <!-- Resource Card 2 -->
+                    <a href="#" class="flex flex-col items-start p-8 bg-white rounded-2xl ring-1 ring-slate-200 card-hover">
+                        <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-lg p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
-                        <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-                            <a href="#">
-                                <span class="absolute inset-0"></span>
-                                <span data-lang-key="blog1Title">Bisakah Lulusan Non-IT Menjadi Data Scientist di 2025?</span>
-                            </a>
-                        </h3>
-                    </article>
-                    <!-- Resource Card 3 (Ebook) -->
-                    <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 card-hover">
-                        <img src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?q=80&w=2070&auto=format&fit=crop" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
-                        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-                        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-                        <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-                             <span class="mr-8" data-lang-key="ebook2Tag">E-BOOK PREMIUM</span>
+                        <p class="mt-6 text-sm font-semibold text-indigo-600" data-lang-key="blog1Category">BLOG: KARIR</p>
+                        <h3 class="mt-2 text-lg font-semibold text-slate-900" data-lang-key="blog1Title">Bisakah Lulusan Non-IT Menjadi Data Scientist di 2025?</h3>
+                        <p class="mt-2 text-base text-slate-600" data-lang-key="blog1Excerpt">Mematahkan mitos dan menyajikan fakta tentang peluang karir data science bagi mereka yang beralih karir.</p>
+                    </a>
+                    <!-- Resource Card 3 -->
+                    <a href="#" class="flex flex-col items-start p-8 bg-white rounded-2xl ring-1 ring-slate-200 card-hover">
+                        <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-lg p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
                         </div>
-                        <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-                            <a href="#">
-                                <span class="absolute inset-0"></span>
-                                <span data-lang-key="ebook3Title">Trik Portofolio yang Menarik Rekruter AS</span>
-                            </a>
-                        </h3>
-                    </article>
+                        <p class="mt-6 text-sm font-semibold text-indigo-600" data-lang-key="ebook2Tag">E-BOOK PREMIUM</p>
+                        <h3 class="mt-2 text-lg font-semibold text-slate-900" data-lang-key="ebook3Title">Trik Portofolio yang Menarik Rekruter AS</h3>
+                        <p class="mt-2 text-base text-slate-600" data-lang-key="ebook3Desc">Cara membangun portofolio yang menonjol dan memukau perekrut dari perusahaan top.</p>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer id="about" class="bg-gray-900" aria-labelledby="footer-heading">
+    <footer id="about" class="bg-slate-900" aria-labelledby="footer-heading">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
                 <div class="space-y-8">
-                     <a href="#" class="flex-shrink-0 flex items-center space-x-2">
-                        <svg class="h-9 w-9 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 15.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0h3.75m-3.75 0h3.75m-3.75 0v3.75m6.75-3v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0H15m-3.75 0v3.75m6-6.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0h3.75M3.75 9h3.75m-3.75 0v3.75m0-3.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0V15m3.75-6v3.75m0 0v3.75m0 0h3.75m-3.75 0h3.75m0 0v-3.75m0 0v-3.75" /></svg>
+                    <a href="#" class="flex-shrink-0 flex items-center space-x-2">
+                        <svg class="h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 15.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0h3.75m-3.75 0h3.75m-3.75 0v3.75m6.75-3v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0H15m-3.75 0v3.75m6-6.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0v3.75m0-3.75v-3.75m0 0h3.75M3.75 9h3.75m-3.75 0v3.75m0-3.75v-3.75m0 0h3.75m-3.75 0h3.75m0 0V15m3.75-6v3.75m0 0v3.75m0 0h3.75m-3.75 0h3.75m0 0v-3.75m0 0v-3.75" /></svg>
                         <span class="font-extrabold text-2xl text-white">DataHack</span>
                     </a>
-                    <p class="text-sm leading-6 text-gray-300" data-lang-key="footerAboutDesc">Mendemokratisasi pendidikan data science dan membuka akses ke peluang karir global untuk semua orang.</p>
+                    <p class="text-sm leading-6 text-slate-300" data-lang-key="footerAboutDesc">Mendemokratisasi pendidikan data science dan membuka akses ke peluang karir global untuk semua orang.</p>
                 </div>
                 <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <div>
                             <h3 class="text-sm font-semibold leading-6 text-white" data-lang-key="footerLinksTitle">Jelajahi</h3>
                             <ul role="list" class="mt-6 space-y-4">
-                                <li><a href="#kelas" class="text-sm leading-6 text-gray-300 hover:text-white" data-lang-key="footerLinkKelas">Kelas</a></li>
-                                <li><a href="#ebooks" class="text-sm leading-6 text-gray-300 hover:text-white" data-lang-key="footerLinkEbooks">E-Books</a></li>
-                                <li><a href="#blog" class="text-sm leading-6 text-gray-300 hover:text-white" data-lang-key="footerLinkBlog">Blog</a></li>
+                                <li><a href="#kelas" class="text-sm leading-6 text-slate-300 hover:text-white" data-lang-key="footerLinkKelas">Kelas</a></li>
+                                <li><a href="#ebooks" class="text-sm leading-6 text-slate-300 hover:text-white" data-lang-key="footerLinkResources">Sumber Daya</a></li>
+                                <li><a href="#testimonial" class="text-sm leading-6 text-slate-300 hover:text-white" data-lang-key="footerLinkTestimonial">Testimonial</a></li>
                             </ul>
                         </div>
                         <div class="mt-10 md:mt-0">
                             <h3 class="text-sm font-semibold leading-6 text-white" data-lang-key="footerContactTitle">Hubungi</h3>
                             <ul role="list" class="mt-6 space-y-4">
-                                <li><a href="mailto:info@datahack.com" class="text-sm leading-6 text-gray-300 hover:text-white">info@datahack.com</a></li>
+                                <li><a href="mailto:info@datahack.com" class="text-sm leading-6 text-slate-300 hover:text-white">info@datahack.com</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-                <p class="text-xs leading-5 text-gray-400">&copy; 2025 DataHack Academy. All rights reserved.</p>
+                <p class="text-xs leading-5 text-slate-400">&copy; 2025 DataHack Academy. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -329,33 +292,31 @@
             id: {
                 pageTitle: "DataHack Academy - Belajar Data Science",
                 navKelas: "Kelas",
-                navEbooks: "E-Books",
-                navBlog: "Blog",
-                navAbout: "Tentang Kami",
+                navEbooks: "Sumber Daya",
+                navTestimonial: "Testimonial",
+                navAbout: "Tentang",
                 heroTitle: "Kuasai Data Science,",
                 heroSubtitle: "Buka Karir Global Anda",
                 heroDescription: "Platform belajar data science terlengkap dengan kurikulum standar industri, proyek praktis, dan bimbingan dari para ahli untuk mempersiapkan Anda bekerja remote di perusahaan top dunia.",
-                heroButton: "Mulai Belajar Sekarang",
+                heroButton: "Jelajahi Kelas",
                 heroLinkAbout: "Pelajari lebih lanjut",
                 socialProofTitle: "Dipercaya oleh para profesional di perusahaan teknologi terkemuka",
-                coursesTag: "Pilihan Populer",
-                coursesTitle: "Alur Belajar untuk Setiap Tujuan",
+                coursesTag: "Alur Belajar",
+                coursesTitle: "Kurikulum untuk Setiap Tujuan Karir",
                 coursesSubtitle: "Pilih jalur yang sesuai dengan tujuan karir Anda, dari dasar hingga tingkat lanjut, semuanya dirancang oleh para ahli industri.",
-                course1Level: "Pemula",
                 course1Title: "Dasar-Dasar Data Science",
                 course1Desc: "Kuasai fondasi Python, SQL, dan Statistika. Sempurna bagi Anda yang memulai dari nol.",
                 course1Price: "Gratis",
-                courseButton: "Lihat Silabus →",
-                course2Level: "Menengah",
+                courseButton: "Mulai Belajar",
+                courseButtonPaid: "Daftar Kelas",
                 course2Title: "Machine Learning untuk Bisnis",
                 course2Desc: "Belajar menerapkan model machine learning untuk memecahkan masalah bisnis nyata seperti prediksi churn.",
                 course2Price: "Rp 1.500.000",
-                course3Level: "Lanjutan",
                 course3Title: "Visualisasi Data & Storytelling",
                 course3Desc: "Ubah data kompleks menjadi insight yang menarik dan mudah dipahami menggunakan Tableau dan Power BI.",
                 course3Price: "Rp 1.250.000",
                 testimonialTag: "Testimonial",
-                testimonialTitle: "Kami telah membantu ribuan orang",
+                testimonialTitle: "Apa Kata Alumni Kami",
                 testimonial1Text: "“Platform ini benar-benar mengubah cara saya memandang data. Materi dari dasar hingga machine learning sangat terstruktur. Dalam 6 bulan, saya berhasil mendapatkan pekerjaan remote pertama saya!”",
                 testimonial1Name: "Andi P.",
                 testimonial1Role: "Data Analyst @ Startup US",
@@ -369,47 +330,48 @@
                 resourcesSubtitle: "Jelajahi E-Book, panduan, dan artikel blog kami untuk mendapatkan wawasan mendalam dan tetap terdepan dalam tren industri.",
                 ebook1Tag: "E-BOOK GRATIS",
                 ebook1Title: "Panduan Karir DS: Dari Nol ke Profesional",
+                ebook1Desc: "Langkah demi langkah memulai karir data science dari nol.",
                 blog1Category: "BLOG: KARIR",
                 blog1Title: "Bisakah Lulusan Non-IT Menjadi Data Scientist di 2025?",
+                blog1Excerpt: "Mematahkan mitos dan menyajikan fakta tentang peluang karir data science bagi mereka yang beralih karir.",
                 ebook2Tag: "E-BOOK PREMIUM",
                 ebook3Title: "Trik Portofolio yang Menarik Rekruter AS",
+                ebook3Desc: "Cara membangun portofolio yang menonjol dan memukau perekrut dari perusahaan top.",
                 footerAboutDesc: "Mendemokratisasi pendidikan data science dan membuka akses ke peluang karir global untuk semua orang.",
                 footerLinksTitle: "Jelajahi",
                 footerLinkKelas: "Kelas",
-                footerLinkEbooks: "E-Books",
-                footerLinkBlog: "Blog",
+                footerLinkResources: "Sumber Daya",
+                footerLinkTestimonial: "Testimonial",
                 footerContactTitle: "Hubungi"
             },
             en: {
                 pageTitle: "DataHack Academy - Learn Data Science",
                 navKelas: "Classes",
-                navEbooks: "E-Books",
-                navBlog: "Blog",
-                navAbout: "About Us",
+                navEbooks: "Resources",
+                navTestimonial: "Testimonials",
+                navAbout: "About",
                 heroTitle: "Master Data Science,",
                 heroSubtitle: "Unlock Your Global Career",
                 heroDescription: "The most complete data science learning platform with an industry-standard curriculum, practical projects, and guidance from experts to prepare you for remote work at top global companies.",
-                heroButton: "Start Learning Now",
+                heroButton: "Explore Classes",
                 heroLinkAbout: "Learn more",
                 socialProofTitle: "Trusted by professionals at leading technology companies",
-                coursesTag: "Popular Picks",
-                coursesTitle: "Learning Paths for Every Goal",
+                coursesTag: "Learning Paths",
+                coursesTitle: "Curriculum for Every Career Goal",
                 coursesSubtitle: "Choose the path that suits your career goals, from basic to advanced, all designed by industry experts.",
-                course1Level: "Beginner",
                 course1Title: "Data Science Fundamentals",
                 course1Desc: "Master the foundations of Python, SQL, and Statistics. Perfect for those starting from scratch.",
                 course1Price: "Free",
-                courseButton: "View Syllabus →",
-                course2Level: "Intermediate",
+                courseButton: "Start Learning",
+                courseButtonPaid: "Enroll Now",
                 course2Title: "Machine Learning for Business",
                 course2Desc: "Learn to apply machine learning models to solve real business problems like churn prediction.",
                 course2Price: "$100",
-                course3Level: "Advanced",
                 course3Title: "Data Visualization & Storytelling",
                 course3Desc: "Turn complex data into engaging and understandable insights using Tableau and Power BI.",
                 course3Price: "$85",
                 testimonialTag: "Testimonials",
-                testimonialTitle: "We've helped thousands of people",
+                testimonialTitle: "What Our Alumni Say",
                 testimonial1Text: "“This platform completely changed how I see data. The material from basics to machine learning is incredibly well-structured. In 6 months, I landed my first remote job!”",
                 testimonial1Name: "Alex P.",
                 testimonial1Role: "Data Analyst @ US Startup",
@@ -423,15 +385,18 @@
                 resourcesSubtitle: "Explore our E-Books, guides, and blog articles to gain deep insights and stay ahead of industry trends.",
                 ebook1Tag: "FREE E-BOOK",
                 ebook1Title: "DS Career Guide: From Zero to Pro",
+                ebook1Desc: "A step-by-step guide to starting a data science career from scratch.",
                 blog1Category: "BLOG: CAREER",
                 blog1Title: "Can a Non-IT Graduate Become a Data Scientist in 2025?",
+                blog1Excerpt: "Busting myths and presenting facts about data science career opportunities for career switchers.",
                 ebook2Tag: "PREMIUM E-BOOK",
                 ebook3Title: "Portfolio Tricks to Attract US Recruiters",
+                ebook3Desc: "How to build a standout portfolio that wows recruiters from top companies.",
                 footerAboutDesc: "Democratizing data science education and unlocking access to global career opportunities for everyone.",
                 footerLinksTitle: "Explore",
                 footerLinkKelas: "Classes",
-                footerLinkEbooks: "E-Books",
-                footerLinkBlog: "Blog",
+                footerLinkResources: "Resources",
+                footerLinkTestimonial: "Testimonials",
                 footerContactTitle: "Contact"
             }
         };
@@ -441,12 +406,12 @@
 
         function changeLanguage(lang) {
             if (lang === 'id') {
-                langIdBtn.classList.add('active');
-                langEnBtn.classList.remove('active');
+                langIdBtn.classList.add('active', 'bg-indigo-600', 'text-white');
+                langEnBtn.classList.remove('active', 'bg-indigo-600', 'text-white');
                 document.documentElement.lang = 'id';
             } else {
-                langEnBtn.classList.add('active');
-                langIdBtn.classList.remove('active');
+                langEnBtn.classList.add('active', 'bg-indigo-600', 'text-white');
+                langIdBtn.classList.remove('active', 'bg-indigo-600', 'text-white');
                 document.documentElement.lang = 'en';
             }
             document.querySelectorAll('[data-lang-key]').forEach(el => {
@@ -461,7 +426,7 @@
         langEnBtn.addEventListener('click', () => changeLanguage('en'));
         
         window.addEventListener('DOMContentLoaded', () => {
-            changeLanguage('id');
+            changeLanguage('id'); // Default to Indonesian
         });
 
         // --- Fade-in on Scroll Animation Script ---
